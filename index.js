@@ -59,7 +59,7 @@ botly.on("message", async (senderId, message, data) => {
   const user = await User.findOne({ where: { uid: senderId}});
   if (message.message.text) {
     if (user != null) {
-        fetch(`https://050322c2-3ffa-4316-9fb0-b2df32aa6ca3-00-2gyq3gw1w88n1.worf.replit.dev/translate.php?lang=${user.dataValues.lang}&text=${message.message.text}`)
+        fetch(`https://api-trt-mopn.koyeb.app/translate.php?lang=${user.dataValues.lang}&text=${message.message.text}`)
         .then(response => response.json())
         .then(data => {
             botly.sendText({id: senderId, text: data.result,
