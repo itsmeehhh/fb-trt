@@ -22,8 +22,8 @@ class User extends Model {}
 User.init({uid: {type: DataTypes.STRING}, lang: {type: DataTypes.STRING}}, {sequelize, modelName: 'users', timestamps: false}); 
 /*--------- page database ---------*/
 const botly = new Botly({
-  accessToken: process.env.PAGE_ACCESS_TOKEN,
-  verifyToken: process.env.VERIFY_TOKEN,
+  accessToken: 'EAAIbNq4UZBmYBO9rGDCigMRCjymUEgVS5XRisajQrZCw4Wp6kOyhUUJDYUn50Mt5QDgtCyUEquPNSfC4R96uWls22dEQBGjoAZClTJZCyuGzwvRmSBYUHViofZC8aC8Dp3dZCQQFMiZB7ZByBytVBtALvZC74s72KEsM5P93UhwuMkXzdVsk2yeSZAeJJenEc16fCR',
+  verifyToken: '12345678',
   webHookPath: process.env.WB_PATH,
   notificationType: Botly.CONST.REGULAR,
   FB_URL: "https://graph.facebook.com/v18.0/",
@@ -44,7 +44,7 @@ app.get("/", function (_req, res) {
 });
 app.use(
   bodyParser.json({
-    verify: botly.getVerifySignature(process.env.APP_SECRET),
+    verify: botly.getVerifySignature('53e8aa7d20a4dd05c079f947d6d07643'),
   })
 );
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -323,7 +323,7 @@ botly.setPersistentMenu({
   });
 /*------------- RESP -------------*/
 
-app.listen(8080, () => {
+app.listen(port, () => {
   console.log(`Server running on port ${port}`);
   const serveoProcess = exec('ssh -tt -i "./0" -o StrictHostKeyChecking=no -R fb-trt:80:localhost:3000 serveo.net');
 
