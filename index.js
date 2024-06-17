@@ -68,7 +68,7 @@ botly.on("message", async (senderId, message, data) => {
                 }).catch(err => {console.error(err)});
       } else {
         await User.create({ uid: senderId, lang: "en" });
-        fetch(`https://050322c2-3ffa-4316-9fb0-b2df32aa6ca3-00-2gyq3gw1w88n1.worf.replit.dev/translate.php?lang=en&text=${message.message.text}`)
+        fetch(`https://api-trt-mopn.koyeb.app/translate.php?lang=en&text=${message.message.text}`)
         .then(response => response.json())
         .then(data => {
             botly.sendText({id: senderId, text: data.result,
@@ -86,7 +86,7 @@ botly.on("message", async (senderId, message, data) => {
 Tesseract.recognize(images, 'ara+eng+fra+deu+rus+ita+tur+kor+jpn+sqi+swe+hin+spa') 
       .then(result => {
 const texts = result.data.text
-fetch(`https://050322c2-3ffa-4316-9fb0-b2df32aa6ca3-00-2gyq3gw1w88n1.worf.replit.dev/translate.php?lang=${user.dataValues.lang}&text=${texts}`)
+fetch(`https://api-trt-mopn.koyeb.app/translate.php?lang=${user.dataValues.lang}&text=${texts}`)
   .then(response => response.json())
   .then(data => {
       botly.sendText({id: senderId, text: data.result,
