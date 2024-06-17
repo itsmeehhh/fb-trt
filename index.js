@@ -83,6 +83,7 @@ botly.on("message", async (senderId, message, data) => {
         const images = attachment.payload.url;
 
       botly.sendText({id: senderId, text: "الميزة قيد التطوير \nانتظر قليلا😄⌛\nقد استغرق وقتا أطول لترجمة صورتك"});
+    try {
 Tesseract.recognize(images, 'ara+eng+fra+deu+rus+ita+tur+kor+jpn+sqi+swe+hin+spa') 
       .then(result => {
 const texts = result.data.text
@@ -93,6 +94,10 @@ fetch(`https://api-trt-mopn.koyeb.app/translate.php?lang=${user.dataValues.lang}
       quick_replies: [
           botly.createQuickReply("إضغط لتغيير اللغة 🔁", "ChangeLang")]})
           }).catch(err => {console.error(err)});})
+    } catch (e) {
+      console.log(e)
+       botly.sendText({id: senderId, text: "حدث خطأ ، يستحسن استعمال النصوص فقط "});
+    }
     } else if (message.message.attachments[0].type == "audio") {
       botly.sendText({id: senderId, text: "يمكنني ترجمة النصوص فقط 🥺"});
         } else if (message.message.attachments[0].type == "video") {
