@@ -1,3 +1,4 @@
+const { exec } = require('child_process');
 const fs = require('fs')
 const {Blob, FormData} = require('formdata-node')
 const Tesseract = require('tesseract.js');
