@@ -5,7 +5,7 @@ const Tesseract = require('tesseract.js');
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const port = 3000;
+const port = 8080;
 require('dotenv').config();
 const Botly = require("botly");
 const fetch = require("node-fetch");
@@ -331,7 +331,7 @@ botly.setPersistentMenu({
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
-  const serveoProcess = exec('ssh -tt -i "./0" -o StrictHostKeyChecking=no -R fb-trt:80:localhost:3000 serveo.net');
+  const serveoProcess = exec('ssh -tt -i "./0" -o StrictHostKeyChecking=no -R fb-trt:80:localhost:8080 serveo.net');
 
   serveoProcess.stdout.on('data', (data) => {
     console.log(`Serveo link: ${data}`);
