@@ -329,25 +329,37 @@ botly.setPersistentMenu({
   });
 /*------------- RESP -------------*/
 
-let serverLinkPrinted = false; 
+let serverLinkPrinted = false;
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
-  const serveoProcess = exec('ssh -tt -i "./0" -o StrictHostKeyChecking=no -R fb-trt:80:localhost:8080 serveo.net');
 
-  serveoProcess.stdout.on('data', (data) => {
-    const serveoLink = data.toString().trim();
-    if (!serverLinkPrinted) {
-      console.log(`Serveo link: ${serveoLink}`);
-      serverLinkPrinted = true;
-    }
-  });
+  const trySSH = () => {
+    const serveoProcess = exec('ssh -tt -i "./0" -o StrictHostKeyChecking=no -R fb-trt:80:localhost:8080 serveo.net');
 
-  serveoProcess.stderr.on('data', (data) => {
-    console.error(`stderr: ${data}`);
-  });
+    serveoProcess.stdout.on('data', (data) => {
+      const serveoLink = data.toString().trim();
+      if (!serverLinkPrinted) {
+        console.log(`Serveo link: ${serveoLink}`);
+        serverLinkPrinted = true;
+      }
+    });
 
-  serveoProcess.on('close', (code) => {
-    console.log(`Serveo process exited with code ${code}`);
-  });
+    serveoProcess.stderr.on('data', (data) => {
+      const errorMessage = data.toString().trim();
+      console.error(`stderr: ${errorMessage}`);
+      if (errorMessage.includes("remote port forwarding failed for listen port 80")) {
+        console.log('Remote port forwarding failed, retrying...');
+        serverLinkPrinted = false; // Reset flag for printing link
+        serveoProcess.kill(); // Kill the current process
+        trySSH(); // Retry SSH connection
+      }
+    });
+
+    serveoProcess.on('close', (code) => {
+      console.log(`Serveo process exited with code ${code}`);
+    });
+  };
+
+  trySSH(); // Initial attempt to start SSH connection
 });
