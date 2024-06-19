@@ -350,9 +350,9 @@ app.listen(port, () => {
       console.error(`stderr: ${errorMessage}`);
       if (errorMessage.includes("remote port forwarding failed for listen port 80")) {
         console.log('Remote port forwarding failed, retrying...');
-        serverLinkPrinted = false; // Reset flag for printing link
-        serveoProcess.kill(); // Kill the current process
-        trySSH(); // Retry SSH connection
+        serverLinkPrinted = false;
+        serveoProcess.kill(); 
+        trySSH(); 
       }
     });
 
@@ -361,5 +361,5 @@ app.listen(port, () => {
     });
   };
 
-  trySSH(); // Initial attempt to start SSH connection
+  trySSH();
 });
