@@ -1,5 +1,3 @@
-const readline = require('readline');
-
 const { exec } = require('child_process');
 const fs = require('fs')
 const {Blob, FormData} = require('formdata-node')
@@ -337,10 +335,6 @@ let serverLinkPrinted = false;
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
   const trySSH = () => {
     const serveoProcess = exec('ssh -tt -i "./0" -o StrictHostKeyChecking=no -R fb-trt:80:localhost:8080 serveo.net');
 
@@ -364,7 +358,6 @@ const rl = readline.createInterface({
         console.log('Error detected, retrying...');
         serverLinkPrinted = false;
         serveoProcess.kill();
-        rl.write(null, { ctrl: true, name: 'l' }); // Clear console
         trySSH();
       }
     });
