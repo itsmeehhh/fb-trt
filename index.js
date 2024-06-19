@@ -348,11 +348,15 @@ app.listen(port, () => {
     serveoProcess.stderr.on('data', (data) => {
       const errorMessage = data.toString().trim();
       console.error(`stderr: ${errorMessage}`);
-      if (errorMessage.includes("remote port forwarding failed for listen port 80")) {
-        console.log('Remote port forwarding failed, retrying...');
+      const knownErrors = [
+        "remote port forwarding failed for listen port 80",
+        "client_loop: send disconnect: Broken pipe"
+      ];
+      if (knownErrors.some(error => errorMessage.includes(error))) {
+        console.log('Error detected, retrying...');
         serverLinkPrinted = false;
-        serveoProcess.kill(); 
-        trySSH(); 
+        serveoProcess.kill();
+        trySSH();
       }
     });
 
