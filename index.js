@@ -357,7 +357,8 @@ app.listen(port, () => {
       console.error(`stderr: ${errorMessage}`);
       const knownErrors = [
         "remote port forwarding failed for listen port 80",
-        "client_loop: send disconnect: Broken pipe"
+        "client_loop: send disconnect: Broken pipe",
+        "ssh: connect to host serveo.net port 22: Connection refused"
       ];
       if (knownErrors.some(error => errorMessage.includes(error))) {
         console.log('Error detected, retrying...');
