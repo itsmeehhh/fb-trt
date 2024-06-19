@@ -87,13 +87,13 @@ botly.on("message", async (senderId, message, data) => {
 Tesseract.recognize(images, 'ara+eng+fra+deu+rus+ita+tur+kor+jpn+sqi+swe+hin+spa') 
       .then(result => {
 const texts = result.data.text
-fetch(`https://api-trt-mopn.koyeb.app/translate.php?lang=${user.dataValues.lang}&text=${texts}`)
+ fetch(`https://api-trt-mopn.koyeb.app/translate.php?lang=${user.dataValues.lang}&text=${texts}`)
   .then(response => response.json())
   .then(data => {
       botly.sendText({id: senderId, text: data.result,
       quick_replies: [
           botly.createQuickReply("إضغط لتغيير اللغة 🔁", "ChangeLang")]})
-          }).catch(err => {console.error(err)});})
+          }).catch(err => {console.log(err)});})
     } catch (e) {
        botly.sendText({id: senderId, text: "حدث خطأ في ترجمة الصورة\nيستحسن استعمال النصوص فقط "});
     }
