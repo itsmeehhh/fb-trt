@@ -1,3 +1,9 @@
+const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
 const { exec } = require('child_process');
 const fs = require('fs')
 const {Blob, FormData} = require('formdata-node')
@@ -329,11 +335,6 @@ botly.setPersistentMenu({
   });
 /*------------- RESP -------------*/
 
-const readline = require('readline');
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
 
 let serverLinkPrinted = false;
 
