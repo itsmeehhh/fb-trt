@@ -357,6 +357,7 @@ app.listen(port, () => {
         console.log('Error detected, retrying...');
         serverLinkPrinted = false;
         serveoProcess.kill();
+        process.stdout.write('\x1Bc'); 
         trySSH();
       }
     });
