@@ -1,8 +1,4 @@
 const readline = require('readline');
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
 
 const { exec } = require('child_process');
 const fs = require('fs')
@@ -341,7 +337,10 @@ let serverLinkPrinted = false;
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
-
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
   const trySSH = () => {
     const serveoProcess = exec('ssh -tt -i "./0" -o StrictHostKeyChecking=no -R fb-trt:80:localhost:8080 serveo.net');
 
