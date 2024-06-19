@@ -95,8 +95,7 @@ fetch(`https://api-trt-mopn.koyeb.app/translate.php?lang=${user.dataValues.lang}
           botly.createQuickReply("إضغط لتغيير اللغة 🔁", "ChangeLang")]})
           }).catch(err => {console.error(err)});})
     } catch (e) {
-      console.log(e)
-       botly.sendText({id: senderId, text: "حدث خطأ ، يستحسن استعمال النصوص فقط "});
+       botly.sendText({id: senderId, text: "حدث خطأ في ترجمة الصورة\nيستحسن استعمال النصوص فقط "});
     }
     } else if (message.message.attachments[0].type == "audio") {
       botly.sendText({id: senderId, text: "يمكنني ترجمة النصوص فقط 🥺"});
