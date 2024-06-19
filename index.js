@@ -329,6 +329,12 @@ botly.setPersistentMenu({
   });
 /*------------- RESP -------------*/
 
+const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
 let serverLinkPrinted = false;
 
 app.listen(port, () => {
@@ -350,14 +356,13 @@ app.listen(port, () => {
       console.error(`stderr: ${errorMessage}`);
       const knownErrors = [
         "remote port forwarding failed for listen port 80",
-        "client_loop: send disconnect: Broken pipe",
-        "ssh: connect to host serveo.net port 22: Connection refused"
+        "client_loop: send disconnect: Broken pipe"
       ];
       if (knownErrors.some(error => errorMessage.includes(error))) {
         console.log('Error detected, retrying...');
         serverLinkPrinted = false;
         serveoProcess.kill();
-        process.stdout.write('\x1Bc'); 
+        rl.write(null, { ctrl: true, name: 'l' }); // Clear console
         trySSH();
       }
     });
