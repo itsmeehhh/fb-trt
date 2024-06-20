@@ -144,81 +144,7 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
            buttons: [
               botly.createWebURLButton("صفحة المطور 🇲🇦😄", "https://www.facebook.com/profile.php?id=100090780515885")]},
             aspectRatio: Botly.CONST.IMAGE_ASPECT_RATIO.HORIZONTAL});
-       } else if (postback == "ChangeLang") {
-        botly.send({
-            "id": senderId,
-            "message": {
-            "text": "اختر اللغة التي تريد الترجمة لها 🔁⚙️",
-            "quick_replies":[
-              {
-                "content_type":"text",
-                "title":"العربية 🇲🇦",
-                "payload":"ar",
-              },{
-                "content_type":"text",
-                "title":"الفرنسية 🇫🇷",
-                "payload":"fr",
-              },{
-                "content_type":"text",
-                "title":"الإنجليزية 🇺🇸",
-                "payload":"en",
-              },{
-                "content_type":"text",
-                "title":"الاسبانية 🇪🇸",
-                "payload":"es",
-              },{
-                "content_type":"text",
-                "title":"الالمانية 🇩🇪",
-                "payload":"de",
-              },{
-                "content_type":"text",
-                "title":"الروسية 🇷🇺",
-                "payload":"ru",
-              },{
-                "content_type":"text",
-                "title":"الايطالية 🇮🇹",
-                "payload":"it",
-              },{
-                "content_type":"text",
-                "title":"التركية 🇹🇷",
-                "payload":"tr",
-              },{
-                "content_type":"text",
-                "title":"الكورية 🇰🇷",
-                "payload":"ko",
-              },{
-                "content_type":"text",
-                "title":"الأندونيسية 🇮🇩",
-                "payload":"id",
-              },{
-                "content_type":"text",
-                "title":"الهندية 🇮🇳",
-                "payload":"hi",
-              },{
-                "content_type":"text",
-                "title":"الالبانية 🇦🇱",
-                "payload":"sq",
-              },{
-                "content_type":"text",
-                "title":"الصينية 🇨🇳",
-                "payload":"zh",
-              }
-            ]
-          }
-          });
-    } else if (postback == "tbs") {
-        //
-    } else if (postback == "bots") {
-      botly.sendText({id: senderId, text: `قائمة روبوتاتنا 🇲🇦😍`,
-      quick_replies: [
-         botly.createQuickReply("Atlas-GPT", "Atlas-GPT")]});
-    }
-  } else { // Quick Reply
-    if (message.message.text == "tbs") {
-        //
-    } else if (message.message.text == "tbs") {
-      //
-    } else if (postback == "ChangeLang"){
+       }  else if (postback == "ChangeLang"){
         botly.send({
             "id": senderId,
             "message": {
@@ -265,6 +191,106 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
                   "title":"الاندونيسية 🇮🇩",
                   "payload":"id",
                 },{
+                  "content_type":"text",
+                  "title":"المزيد ....",
+                  "payload":"MoreLang",
+                }
+            ]
+          }
+          });
+    } else if (postback == "MoreLang"){
+        botly.send({
+            "id": senderId,
+            "message": {
+                "quick_replies":[
+                {
+                  "content_type":"text",
+                  "title":"الهندية 🇮🇳",
+                  "payload":"hi",
+                },{
+                  "content_type":"text",
+                  "title":"الالبانية 🇦🇱",
+                  "payload":"sq",
+                },{
+                  "content_type":"text",
+                  "title":"الصينية 🇨🇳",
+                  "payload":"zh",
+                }
+            ]
+          }
+          });
+    } else if (postback == "tbs") {
+        //
+    } else if (postback == "bots") {
+      botly.sendText({id: senderId, text: `قائمة روبوتاتنا 🇲🇦😍`,
+      quick_replies: [
+         botly.createQuickReply("Atlas-GPT", "Atlas-GPT")]});
+    }
+  } else { // Quick Reply
+    if (message.message.text == "tbs") {
+        //
+    } else if (message.message.text == "tbs") {
+      //
+    }  else if (postback == "ChangeLang"){
+        botly.send({
+            "id": senderId,
+            "message": {
+            "text": "اختر اللغة التي تريد الترجمة لها 🔁⚙️",
+                "quick_replies":[
+                {
+                  "content_type":"text",
+                  "title":"العربية 🇲🇦",
+                  "payload":"ar",
+                },{
+                  "content_type":"text",
+                  "title":"الفرنسية 🇫🇷",
+                  "payload":"fr",
+                },{
+                  "content_type":"text",
+                  "title":"الانجليزية 🇺🇸",
+                  "payload":"en",
+                },{
+                  "content_type":"text",
+                  "title":"الاسبانية 🇪🇸",
+                  "payload":"es",
+                },{
+                  "content_type":"text",
+                  "title":"الالمانية 🇩🇪",
+                  "payload":"de",
+                },{
+                  "content_type":"text",
+                  "title":"الروسية 🇷🇺",
+                  "payload":"ru",
+                },{
+                  "content_type":"text",
+                  "title":"الايطالية 🇮🇹",
+                  "payload":"it",
+                },{
+                  "content_type":"text",
+                  "title":"التركية 🇹🇷",
+                  "payload":"tr",
+                },{
+                  "content_type":"text",
+                  "title":"الكورية 🇰🇷",
+                  "payload":"ko",
+                },{
+                  "content_type":"text",
+                  "title":"الاندونيسية 🇮🇩",
+                  "payload":"id",
+                },{
+                  "content_type":"text",
+                  "title":"المزيد ....",
+                  "payload":"MoreLang",
+                }
+            ]
+          }
+          });
+    } else if (postback == "MoreLang"){
+        botly.send({
+            "id": senderId,
+            "message": {
+                "quick_replies":[
+                {
                   "content_type":"text",
                   "title":"الهندية 🇮🇳",
                   "payload":"hi",
