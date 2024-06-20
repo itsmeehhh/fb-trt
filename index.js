@@ -87,7 +87,7 @@ botly.on("message", async (senderId, message, data) => {
 Tesseract.recognize(images, 'ara+eng+fra+deu+rus+ita+tur+kor+jpn+sqi+swe+hin+spa') 
       .then(result => {
 const texts = result.data.text
- fetch(`https://api-trt-mopn.koyeb.app/translate.php?lang=${user.dataValues.lang}&text=${texts}`)
+await fetch(`https://api-trt-mopn.koyeb.app/translate.php?lang=${user.dataValues.lang}&text=${texts}`)
   .then(response => response.json())
   .then(data => {
       botly.sendText({id: senderId, text: data.result,
