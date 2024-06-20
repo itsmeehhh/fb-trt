@@ -192,7 +192,7 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
                   "payload":"id",
                 },{
                   "content_type":"text",
-                  "title":"المزيد ....",
+                  "title":"المزيد من اللغات 🔄",
                   "payload":"MoreLang",
                 }
             ]
@@ -202,7 +202,6 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
         botly.send({
             "id": senderId,
             "message": {
-              "text": "اختر اللغة التي تريد الترجمة لها 🔁⚙️",
                 "quick_replies":[
                 {
                   "content_type":"text",
@@ -216,6 +215,34 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
                   "content_type":"text",
                   "title":"الصينية 🇨🇳",
                   "payload":"zh",
+                },{
+                  "content_type":"text",
+                  "title":"الهولندية 🇳🇱",
+                  "payload":"nl",
+                },{
+                  "content_type":"text",
+                  "title":"الفلبينية 🇵🇭",
+                  "payload":"fil",
+                },{
+                  "content_type":"text",
+                  "title":"البنغلاديشية 🇧🇩",
+                  "payload":"bn",
+                },{
+                  "content_type":"text",
+                  "title":"اليابانية 🇯🇵",
+                  "payload":"ja",
+                },{
+                  "content_type":"text",
+                  "title":"البرتغالية 🇵🇹",
+                  "payload":"pt",
+                },{
+                  "content_type":"text",
+                  "title":"البلغارية 🇧🇬",
+                  "payload":"bg",
+                },{
+                  "content_type":"text",
+                  "title":"الأوكرانية 🇺🇦",
+                  "payload":"uk",
                 }
             ]
           }
@@ -280,7 +307,7 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
                   "payload":"id",
                 },{
                   "content_type":"text",
-                  "title":"المزيد ....",
+                  "title":"المزيد من اللغات 🔄",
                   "payload":"MoreLang",
                 }
             ]
@@ -290,7 +317,6 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
         botly.send({
             "id": senderId,
             "message": {
-              "text": "اختر اللغة التي تريد الترجمة لها 🔁⚙️",
                 "quick_replies":[
                 {
                   "content_type":"text",
@@ -304,6 +330,34 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
                   "content_type":"text",
                   "title":"الصينية 🇨🇳",
                   "payload":"zh",
+                },{
+                  "content_type":"text",
+                  "title":"الهولندية 🇳🇱",
+                  "payload":"nl",
+                },{
+                  "content_type":"text",
+                  "title":"الفلبينية 🇵🇭",
+                  "payload":"fil",
+                },{
+                  "content_type":"text",
+                  "title":"البنغلاديشية 🇧🇩",
+                  "payload":"bn",
+                },{
+                  "content_type":"text",
+                  "title":"اليابانية 🇯🇵",
+                  "payload":"ja",
+                },{
+                  "content_type":"text",
+                  "title":"البرتغالية 🇵🇹",
+                  "payload":"pt",
+                },{
+                  "content_type":"text",
+                  "title":"البلغارية 🇧🇬",
+                  "payload":"bg",
+                },{
+                  "content_type":"text",
+                  "title":"الأوكرانية 🇺🇦",
+                  "payload":"uk",
                 }
             ]
           }
