@@ -215,7 +215,7 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
                   "content_type":"text",
                   "title":"الصينية 🇨🇳",
                   "payload":"zh",
-                },{
+                }/*,{
                   "content_type":"text",
                   "title":"الهولندية 🇳🇱",
                   "payload":"nl",
@@ -239,7 +239,7 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
                   "content_type":"text",
                   "title":"البلغارية 🇧🇬",
                   "payload":"bg",
-                }/*,{
+                },{
                   "content_type":"text",
                   "title":"الأوكرانية 🇺🇦",
                   "payload":"uk",
@@ -330,7 +330,7 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
                   "content_type":"text",
                   "title":"الصينية 🇨🇳",
                   "payload":"zh",
-                },{
+                }/*,{
                   "content_type":"text",
                   "title":"الهولندية 🇳🇱",
                   "payload":"nl",
@@ -354,7 +354,7 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
                   "content_type":"text",
                   "title":"البلغارية 🇧🇬",
                   "payload":"bg",
-                }/*,{
+                },{
                   "content_type":"text",
                   "title":"الأوكرانية 🇺🇦",
                   "payload":"uk",
