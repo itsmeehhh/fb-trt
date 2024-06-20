@@ -81,9 +81,8 @@ botly.on("message", async (senderId, message, data) => {
     } else if (message.message.attachments[0].type == "image") {
         const attachment = message.message.attachments[0] 
         const images = attachment.payload.url;
-
       botly.sendText({id: senderId, text: "الميزة قيد التطوير \nانتظر قليلا😄⌛\nقد استغرق وقتا أطول لترجمة صورتك"});
-    try {
+    if (user != null) {
 Tesseract.recognize(images, 'ara+eng+fra+deu+rus+ita+tur+kor+jpn+sqi+swe+hin+spa') 
       .then(result => {
 const texts = result.data.text
@@ -94,8 +93,18 @@ const texts = result.data.text
       quick_replies: [
           botly.createQuickReply("إضغط لتغيير اللغة 🔁", "ChangeLang")]})
           }).catch(err => {console.log(err)});})
-    } catch (e) {
-       botly.sendText({id: senderId, text: "حدث خطأ في ترجمة الصورة\nيستحسن استعمال النصوص فقط "});
+    } else {
+      await User.create({ uid: senderId, lang: "ar" });
+Tesseract.recognize(images, 'ara+eng+fra+deu+rus+ita+tur+kor+jpn+sqi+swe+hin+spa') 
+      .then(result => {
+const texts = result.data.text
+ fetch(`https://api-trt-mopn.koyeb.app/translate.php?lang=ar&text=${texts}`)
+  .then(response => response.json())
+  .then(data => {
+      botly.sendText({id: senderId, text: data.result,
+      quick_replies: [
+          botly.createQuickReply("إضغط لتغيير اللغة 🔁", "ChangeLang")]})
+          }).catch(err => {console.log(err)});})
     }
     } else if (message.message.attachments[0].type == "audio") {
       botly.sendText({id: senderId, text: "يمكنني ترجمة النصوص فقط 🥺"});
