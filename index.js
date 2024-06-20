@@ -202,6 +202,7 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
         botly.send({
             "id": senderId,
             "message": {
+              "text": "اختر اللغة التي تريد الترجمة لها 🔁⚙️",
                 "quick_replies":[
                 {
                   "content_type":"text",
@@ -215,7 +216,7 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
                   "content_type":"text",
                   "title":"الصينية 🇨🇳",
                   "payload":"zh",
-                }/*,{
+                },{
                   "content_type":"text",
                   "title":"الهولندية 🇳🇱",
                   "payload":"nl",
@@ -243,7 +244,7 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
                   "content_type":"text",
                   "title":"الأوكرانية 🇺🇦",
                   "payload":"uk",
-                }*/
+                }
             ]
           }
           });
@@ -317,6 +318,7 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
         botly.send({
             "id": senderId,
             "message": {
+              "text": "اختر اللغة التي تريد الترجمة لها 🔁⚙️",
                 "quick_replies":[
                 {
                   "content_type":"text",
@@ -330,7 +332,7 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
                   "content_type":"text",
                   "title":"الصينية 🇨🇳",
                   "payload":"zh",
-                }/*,{
+                },{
                   "content_type":"text",
                   "title":"الهولندية 🇳🇱",
                   "payload":"nl",
@@ -358,7 +360,7 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
                   "content_type":"text",
                   "title":"الأوكرانية 🇺🇦",
                   "payload":"uk",
-                }*/
+                }
             ]
           }
           });
