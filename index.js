@@ -488,7 +488,7 @@ updateOrCreate(User, { uid: senderId }, { lang: postback })
     const languageName = languageMap[postback] || postback; // Get the full name and emoji, or fallback to the code
     botly.sendText({
       id: senderId,
-      text: `تم تغيير اللغة ⚙️✅ \n\n ستتم الترجمة الى اللغة '${languageName}'\n ويمكنك أيضا ارسال نص باللغة '${languageName}' وسيتم ترجمته تلقائيا الى اللغة'العربية 🇲🇦'`
+      text: `تم تغيير اللغة ⚙️✅ \n\n ستتم الترجمة الى اللغة '${languageName}'\n\n ويمكنك أيضا ارسال نص باللغة '${languageName}' وسيتم ترجمته تلقائيا الى اللغة 'العربية 🇲🇦'`
     });
   });
 
