@@ -431,11 +431,11 @@ botly.setPersistentMenu({
 
 
 
-let serverLinkPrinted = false;
+//let serverLinkPrinted = false;
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
-  const trySSH = () => {
+  /*const trySSH = () => {
     const serveoProcess = exec('ssh -tt -i "./0" -o StrictHostKeyChecking=no -R fb-trt:80:localhost:8080 serveo.net');
 
     serveoProcess.stdout.on('data', (data) => {
@@ -467,5 +467,5 @@ app.listen(port, () => {
     });
   };
 
-  trySSH();
+  trySSH();*/
 });
