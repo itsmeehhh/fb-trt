@@ -121,13 +121,29 @@ botly.on("message", async (senderId, message, data) => {
             }
         } catch (err) {
             console.error("Language detection error:", err);
-          botly.sendText({
+          ////////////
+          fetch(`https://api-trt-mopn.koyeb.app/translate.php?lang=${user.dataValues.lang}&text=${encodeURIComponent(originalText)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        botly.sendText({
                             id: senderId,
-                            text: 'حدث خطأ اثناء الكشف عن لغة النص\n سيعمل المطور على حل المشكل',
+                            text: data.result,
                             quick_replies: [
                                 botly.createQuickReply("إضغط لتغيير اللغة 🔁", "ChangeLang")
                             ]
                         });
+                    })
+                    .catch(err => {
+                        console.error(err);
+                       botly.sendText({
+                            id: senderId,
+                            text: 'لم أتمكن من ترجمة هذا النص \n ربما النص طويل جدا او اذا لم يكن طويل اعد الارسال',
+                            quick_replies: [
+                                botly.createQuickReply("إضغط لتغيير اللغة 🔁", "ChangeLang")
+                            ]
+                        });
+                    });
+          ///////
         }
       } else {
         await User.create({ uid: senderId, lang: "en" });
