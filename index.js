@@ -460,7 +460,7 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
             botly.createWebURLButton("مطور البوت 🇲🇦😍", "fb.com/Morocco.Openai")]},
           aspectRatio: Botly.CONST.IMAGE_ASPECT_RATIO.HORIZONTAL});
      } else {
-      const languageMap = {
+const languageMap = {
   "ar": "العربية 🇲🇦",
   "fr": "الفرنسية 🇫🇷",
   "en": "الإنجليزية 🇺🇸",
@@ -485,11 +485,18 @@ botly.on("postback", async (senderId, message, postback, data, ref) => {
 
 updateOrCreate(User, { uid: senderId }, { lang: postback })
   .then(function(result) {
-    const languageName = languageMap[postback] || postback; // Get the full name and emoji, or fallback to the code
-    botly.sendText({
-      id: senderId,
-      text: `تم تغيير اللغة ⚙️✅ \n\n ستتم الترجمة الى اللغة '${languageName}'\n\n ويمكنك أيضا ارسال نص باللغة '${languageName}' وسيتم ترجمته تلقائيا الى اللغة 'العربية 🇲🇦'`
-    });
+    if (postback === "ar") {
+      botly.sendText({
+        id: senderId,
+        text: `تم تغيير اللغة ⚙️✅`
+      });
+    } else {
+      const languageName = languageMap[postback] || postback; 
+      botly.sendText({
+        id: senderId,
+        text: `تم تغيير اللغة ⚙️✅ \n\n ستتم الترجمة الى '${languageName}'\n\n ويمكنك أيضا ارسال نص ب '${languageName}' وسيتم ترجمته تلقائيا الى 'العربية 🇲🇦'`
+      });
+    }
   });
 
      }
