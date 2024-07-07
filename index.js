@@ -73,14 +73,14 @@ botly.on("message", async (senderId, message, data) => {
         try {
             const detectedLang = await detectLanguage(originalText);
 
-            if (detectedLang === "en" || detectedLang === "fr" || detectedLang === `${user.dataValues.lang}`) {
+            if (/*detectedLang === "en" || detectedLang === "fr" || */detectedLang === `${user.dataValues.lang}`) {
                 // trt auto to ar
                 fetch(`https://api-trt-mopn.koyeb.app/translate.php?lang=ar&text=${encodeURIComponent(originalText)}`)
                     .then(response => response.json())
                     .then(data => {
                         botly.sendText({
                             id: senderId,
-                            text: `${data.result}\n---------------\n تم استخدام الترجمة العكسية `,
+                            text: `${data.result}\n\n---------------\n تم استخدام الترجمة العكسية `,
                             quick_replies: [
                                 botly.createQuickReply("إضغط لتغيير اللغة 🔁", "ChangeLang")
                             ]
