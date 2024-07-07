@@ -73,7 +73,7 @@ botly.on("message", async (senderId, message, data) => {
         try {
             const detectedLang = await detectLanguage(originalText);
 
-            if (/*detectedLang === "en" || detectedLang === "fr" || */detectedLang === `${user.dataValues.lang}`) {
+            if (detectedLang === "en" || detectedLang === "fr" || detectedLang === `${user.dataValues.lang}`) {
                 // trt auto to ar
                 fetch(`https://api-trt-mopn.koyeb.app/translate.php?lang=ar&text=${encodeURIComponent(originalText)}`)
                     .then(response => response.json())
