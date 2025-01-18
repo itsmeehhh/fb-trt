@@ -23,7 +23,7 @@ class User extends Model {}
 User.init({uid: {type: DataTypes.STRING}, lang: {type: DataTypes.STRING}}, {sequelize, modelName: 'users', timestamps: false}); 
 /*--------- page database ---------*/
 const botly = new Botly({
-  accessToken: 'EAAIbNq4UZBmYBO9rGDCigMRCjymUEgVS5XRisajQrZCw4Wp6kOyhUUJDYUn50Mt5QDgtCyUEquPNSfC4R96uWls22dEQBGjoAZClTJZCyuGzwvRmSBYUHViofZC8aC8Dp3dZCQQFMiZB7ZByBytVBtALvZC74s72KEsM5P93UhwuMkXzdVsk2yeSZAeJJenEc16fCR',
+  accessToken: 'EAAMjoLwZBS6EBOwd5ojjlO9DrGqRd67IjOOe5nG3RLZBjWXPfsaqUAnyfmLyW6iF9FSo3u2msHktXkHabTty7W4YnbgVA8GQZBoIDm15N0fPJIOu0TcFztaL3ef3Ytxo9Ax2umtID7FdwHfuiOcO3PuG4gyMQv7cnGOVchQfBVad9ZADIIHQIaJdZB8QR23NK',
   verifyToken: '12345678',
   webHookPath: process.env.WB_PATH,
   notificationType: Botly.CONST.REGULAR,
@@ -45,7 +45,7 @@ app.get("/", function (_req, res) {
 });
 app.use(
   bodyParser.json({
-    verify: botly.getVerifySignature('53e8aa7d20a4dd05c079f947d6d07643'),
+    verify: botly.getVerifySignature('e899d98de2e864523b60b8903e3e1fd1'),
   })
 );
 app.use(bodyParser.urlencoded({ extended: false }));
